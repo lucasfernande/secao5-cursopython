@@ -16,3 +16,6 @@ for root, dirs, files in os.walk(caminho_original):
 
         shutil.move(old_file_path, new_file_path) # movendo os arquivos da pasta teste para a teste2
         print(f'Arquivo {file} movido!')
+
+        shutil.copy(new_file_path, old_file_path) # copiando os arquivos de volta para a pasta teste
+        print(f'Arquivo {file} copiado!')
