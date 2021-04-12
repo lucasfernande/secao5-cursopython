@@ -37,6 +37,7 @@ print('#' * 40)
 
 # gerando novas linhas
 
+"""
 for linha in range(5, 16):
     numero_pedido = linha - 1
     # Coluna A = 1
@@ -45,3 +46,28 @@ for linha in range(5, 16):
     planilha1.cell(linha, 3).value = round(uniform(10, 100), 2)
 
 pedidos.save('planilha_modificada.xlsx')
+
+"""
+# criando uma planilha
+
+nova_planilha = openpyxl.Workbook()
+nova_planilha.create_sheet('Planilha1', 0)  # criando páginas
+nova_planilha.create_sheet('Planilha2', 1)
+
+planilha_criada1 = nova_planilha['Planilha1']
+planilha_criada2 = nova_planilha['Planilha2']
+
+for linha in range(1, 10):
+    numero_pedido = linha - 1
+    # Coluna A = 1
+    planilha_criada1.cell(linha, 1).value = numero_pedido
+    planilha_criada1.cell(linha, 2).value = 1200 + linha
+    planilha_criada1.cell(linha, 3).value = round(uniform(10, 100), 2)
+
+
+for linha in range(1, 10):
+    planilha_criada2.cell(linha, 1).value = f'Luiz {linha} {round(uniform(10, 50), 2)}'
+    planilha_criada2.cell(linha, 2).value = f'Maria {linha} {round(uniform(10, 50), 2)}'
+    planilha_criada2.cell(linha, 3).value = f'Otávio {linha} {round(uniform(10, 50), 2)}'
+
+nova_planilha.save('planilha_criada.xlsx')
